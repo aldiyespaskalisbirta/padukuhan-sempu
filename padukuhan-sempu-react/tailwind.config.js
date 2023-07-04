@@ -11,5 +11,9 @@ module.exports = {
   daisyui: {
     themes: ["light", "dark", "cupcake", "garden"],
   },
-  plugins: [require("daisyui"), require("flowbite/plugin")],
+  plugins: [
+    require("daisyui"),
+    require("flowbite/plugin"),
+    require("tailwind-scrollbar-hide"),
+  ],
 };
