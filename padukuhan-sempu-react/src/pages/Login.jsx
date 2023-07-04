@@ -34,7 +34,7 @@ const Login = () => {
         <button className="submit btn btn-active btn-accent mt-4">Login</button>
         <div className="flex justify-center text-xs">
           <p>Tidak memiliki akun?</p>
-          <Link href="/signup" className="text-green-500 ml-1">
+          <Link to="/signup" className="text-green-500 ml-1">
             buat akun
           </Link>
         </div>
