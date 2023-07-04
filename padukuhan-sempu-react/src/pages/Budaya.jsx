@@ -13,6 +13,13 @@ const Budaya = () => {
       <main>
         <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
           {/* KONTEN */}
+          <div className="h-[100vh]">
+            scrol
+          </div>
+          <div className="s">
+            scrol
+          </div>
+          
         </div>
       </main>
     </>
