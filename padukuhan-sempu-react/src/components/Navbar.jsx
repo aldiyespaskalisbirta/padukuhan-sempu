@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 const navigation = [
   { name: "Home", to: "/" },
   { name: "Budaya", to: "/budaya" },
-  { name: "Gallery Foto", to: "gallery" },
-  { name: "Kontak", to: "kontak" },
+  { name: "Gallery Foto", to: "/gallery/images" },
+  { name: "Kontak", to: "/kontak" },
 ];
 
 const Navbar = () => {

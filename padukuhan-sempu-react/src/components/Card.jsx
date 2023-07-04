@@ -6,7 +6,7 @@ const Card = () => {
       <div class="w-full p-1 md:p-2">
         <img
           alt="gallery"
-          class="block h-full w-full rounded-lg object-cover object-center"
+          class="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform"
           src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
         />
       </div>

@@ -42,10 +42,7 @@ const AddImages = () => {
                 <input id="dropzone-file" type="file" className="hidden" />
               </label>
             </div>
-            <Button
-              color="success"
-              className="bg-green-500 w-full mt-10 hover:bg-green-600"
-            >
+            <Button className="bg-[#577865] w-full mt-10 hover:bg-green-600">
               <p>Submit</p>
             </Button>
           </div>
