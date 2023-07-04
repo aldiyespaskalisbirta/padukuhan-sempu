@@ -1,0 +1,163 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Images;
+use App\Http\Requests\ImageStoreRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+class ImageController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        // all images
+        $images = Images::all();
+
+        // return json response
+        return response()->json([
+            'images' => $images
+        ], 200);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(ImageStoreRequest $request)
+    {
+        try {
+            $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtention();
+
+            // create image
+            Images::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $imageName,
+            ]);
+
+            // save image in storage folder
+            Storage::disk('public')->put($imageName, file_get_contents($request->image));
+
+            // return Json Response
+            return response()->json([
+                'message' => 'Image successfully created'
+            ], 200);
+        } catch (\Exception $e) {
+            // return Json Response
+            return response()->json([
+                'message' => 'something went really wrong'
+            ], 500);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        // image detail
+        $image = Images::find($id);
+        if (!$image) {
+            return response()->json([
+                'message' => 'Image Not Found!',
+            ], 404);
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(ImageStoreRequest $request, string $id)
+    {
+        try {
+            // find product
+            $image = Images::find($id);
+            if (!$image) {
+                return response()->json([
+                    'message' => 'Image Not Found!',
+                ], 404);
+            }
+
+            // echo "request : $request->title";
+            // echo "description : $request->description";
+            $image->title = $request->title;
+            $image->description = $request->description;
+
+            if ($request->image) {
+                // public storage
+                $storage = Storage::disk('public');
+
+                // old image delete
+                if ($storage->exists($image->image)) {
+                    $storage->delete($image->image);
+                }
+
+                // image name
+                $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtention();
+                $image->image = $imageName;
+
+                // image save in public folder
+                $storage->put($imageName, file_get_contents($request->image));
+            }
+            // update image
+            $image->save();
+
+            // return Json Response
+            return response()->json([
+                'message' => 'Image successfully update!'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Something Went Really Wrong!!'
+            ], 500);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        // Detail
+        $image = Images::find($id);
+
+        if (!$image) {
+            return response()->json([
+                'message' => 'Product Not Found!',
+            ], 404);
+        }
+
+        // public storage
+        $storage = Storage::disk('public');
+
+        // image delete
+        if ($storage->exists($image->image)) {
+            $storage->delete($image->image);
+        }
+
+        // Return Json Response
+        return response()->json([
+            'message' => 'image successfully deleted'
+        ], 200);
+    }
+}
