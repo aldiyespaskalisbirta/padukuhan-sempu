@@ -26,7 +26,9 @@ export default function DefaultLayout() {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <section className="mt-16">
+        <Outlet />
+      </section>
     </>
   );
 }
