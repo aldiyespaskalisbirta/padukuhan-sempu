@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar flex justify-between items-center h-14 opacity-80 px-24 bg-green-800 fixed top-0 left-0 right-0 z-50">
+    <nav className="navbar flex justify-between items-center h-14 opacity-80 px-24 bg-[#577865] fixed top-0 left-0 right-0 z-50">
       <div className="logo text-white font-bold text-2xl">SEMPU I</div>
       <div className="flex flex-row gap-3">
         <div className="flex justify-center items-center">
