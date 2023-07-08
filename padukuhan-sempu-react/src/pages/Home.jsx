@@ -79,12 +79,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-
         {/* Google Maps */}
         <div className="text-center m-16 ">
           <div >
-            <p className="uppercase ont-sans font-black md:text-2xl text-base mb-10 uppercase">lokasi dan kontak</p>
+            <Slide>
+              <p className="uppercase ont-sans font-black md:text-2xl text-base mb-10 uppercase">lokasi dan kontak</p>
+            </Slide>
           </div>
+
           <div>
             <MapLink
               destination={'Kadus Sempu Eko, VPGQ+24V, Sempu, Pringombo, Kec. Rongkop, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55883'}

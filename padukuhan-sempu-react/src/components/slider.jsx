@@ -22,7 +22,7 @@ const slides = [
 
 const Slider = () => {
   return (
-    <div className="carousel w-full bh-cover">
+    <div className="carousel w-full bg-cover">
       {slides.map((slide) => (
         <div key={slide.id} id={slide.id} className="carousel-item relative w-full">
           <img src={slide.imageUrl} className="w-full" />
