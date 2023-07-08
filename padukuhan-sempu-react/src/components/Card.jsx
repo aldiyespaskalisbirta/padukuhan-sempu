@@ -1,15 +1,15 @@
 import React from "react";
 
-const Card = () => {
+const Card = ({ title, description, imagePath }) => {
   return (
-    <div class="flex w-1/3 flex-wrap">
-      <div class="w-full p-1 md:p-2">
-        <img
-          alt="gallery"
-          class="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform"
-          src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-        />
-      </div>
+    // <div className="flex w-1/3 flex-wrap">
+    <div className="w-full p-1 md:p-2">
+      <img
+        alt={title}
+        className="block h-full w-full rounded-lg object-cover object-center hover:scale-105 transition-transform"
+        src={`http://127.0.0.1:8000/storage/${imagePath}`}
+      />
+      {/* </div> */}
     </div>
   );
 };

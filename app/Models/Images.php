@@ -11,7 +11,7 @@ class Images extends Model
 
     protected $fillable = [
         'title',
+        'image',
         'description',
-        'image'
     ];
 }
