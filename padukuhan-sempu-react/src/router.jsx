@@ -8,7 +8,7 @@ import GuestLayout from "./components/GuestLayout";
 import DefaultLayout from "./components/DefaultLayout";
 import Home from "./pages/Home";
 import Images from "./components/Images";
-import AddImages from "./components/AddImages";
+import UploadImage from "./components/UploadImage";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "add-image",
-            element: <AddImages />,
+            element: <UploadImage />,
           },
           {
             path: "images",

@@ -18,7 +18,7 @@ const Gallery = () => {
         </div>
       </header>
       <main className="min-h-screen">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex justify-center items-center mx-auto max-w-7xl sm:px-6 lg:px-8">
           <Outlet />
         </div>
       </main>

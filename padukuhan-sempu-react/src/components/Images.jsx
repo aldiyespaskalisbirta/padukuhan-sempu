@@ -1,46 +1,45 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import ImageModal from "./ImageModal";
 
 const Images = () => {
-  const [images, setImages] = useState([]);
+  const [dataImages, setDataImages] = useState([]);
   const [errors, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
-    const getImages = () => {
-      fetch("http://127.0.0.1:8000/api/images")
-        .then((res) => {
-          return res.json();
-        })
-        .then((response) => {
-          // console.log(response.images);
-          setImages(response.images);
-        })
-        .catch((error) => {
-          setError(error);
-        });
+    const getImages = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/images");
+        const data = await response.json();
+        setDataImages(data.images);
+      } catch (err) {
+        setError(err);
+      }
     };
     getImages();
   }, []);
 
   const deleteImages = (id) => {
     axios
-      .delete("http://127.0.0.1/8000/api/images-delete/" + id)
+      .delete("http://127.0.0.1:8000/api/images-delete/" + id)
       .then(function (response) {
         console.log(response.data);
         alert("successfully Deleted");
       });
   };
+
   return (
     <>
       <main>
         {/* Your content */}
         <div className="container">
-          <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
-            {images.map((data, index) => (
-              <Card
+          <div className="columns-4 gap-3 w-[1200px] mx-auto space-y-3 pb-28">
+            {dataImages.map((data, index) => (
+              <ImageModal
                 key={index}
                 title={data.title}
                 description={data.description}
-                imagePath={data.image}
+                imageUrl={`http://127.0.0.1:8000/storage/${data.image}`}
+                imageId={data.id}
               />
             ))}
           </div>
