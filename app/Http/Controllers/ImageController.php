@@ -38,13 +38,13 @@ class ImageController extends Controller
     public function store(ImageStoreRequest $request)
     {
         try {
-            $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtention();
+            $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
 
             // create image
             Images::create([
                 'title' => $request->title,
-                'description' => $request->description,
                 'image' => $imageName,
+                'description' => $request->description,
             ]);
 
             // save image in storage folder
@@ -52,7 +52,7 @@ class ImageController extends Controller
 
             // return Json Response
             return response()->json([
-                'message' => 'Image successfully created'
+                'message' => 'Image successfully added'
             ], 200);
         } catch (\Exception $e) {
             // return Json Response
@@ -68,8 +68,8 @@ class ImageController extends Controller
     public function show(string $id)
     {
         // image detail
-        $image = Images::find($id);
-        if (!$image) {
+        $images = Images::find($id);
+        if (!$images) {
             return response()->json([
                 'message' => 'Image Not Found!',
             ], 404);
@@ -91,8 +91,8 @@ class ImageController extends Controller
     {
         try {
             // find product
-            $image = Images::find($id);
-            if (!$image) {
+            $images = Images::find($id);
+            if (!$images) {
                 return response()->json([
                     'message' => 'Image Not Found!',
                 ], 404);
@@ -100,27 +100,27 @@ class ImageController extends Controller
 
             // echo "request : $request->title";
             // echo "description : $request->description";
-            $image->title = $request->title;
-            $image->description = $request->description;
+            $images->title = $request->title;
+            $images->description = $request->description;
 
-            if ($request->image) {
+            if ($request->images) {
                 // public storage
                 $storage = Storage::disk('public');
 
                 // old image delete
-                if ($storage->exists($image->image)) {
-                    $storage->delete($image->image);
+                if ($storage->exists($images->image)) {
+                    $storage->delete($images->image);
                 }
 
                 // image name
-                $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtention();
-                $image->image = $imageName;
+                $imageName = Str::random(32) . "." . $request->images->getClientOriginalExtension();
+                $images->image = $imageName;
 
                 // image save in public folder
                 $storage->put($imageName, file_get_contents($request->image));
             }
             // update image
-            $image->save();
+            $images->save();
 
             // return Json Response
             return response()->json([

@@ -25,14 +25,14 @@ class ImageStoreRequest extends FormRequest
 
             return [
                 'title' => 'required|string|max:258',
-                'desscription' => 'required|string',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'description' => 'required|string',
             ];
         } else {
             return [
                 'title' => 'required|string|max:258',
-                'desscription' => 'required|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'description' => 'required|string',
             ];
         }
     }

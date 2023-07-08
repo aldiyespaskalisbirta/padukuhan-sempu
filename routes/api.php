@@ -15,9 +15,9 @@ use App\Http\Controllers\ImageController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::get('images', [ImageController::class, 'index']);
 Route::get('images/{id}', [ImageController::class, 'show']);
