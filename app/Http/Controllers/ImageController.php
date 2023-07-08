@@ -16,9 +16,7 @@ class ImageController extends Controller
     public function index()
     {
         // all images
-        $images = Images::all();
-
-        // return json response
+        $images = Images::orderBy('created_at', 'desc')->get();
         return response()->json([
             'images' => $images
         ], 200);
@@ -68,12 +66,15 @@ class ImageController extends Controller
     public function show(string $id)
     {
         // image detail
-        $images = Images::find($id);
-        if (!$images) {
+        $image = Images::find($id);
+        if (!$image) {
             return response()->json([
                 'message' => 'Image Not Found!',
             ], 404);
         }
+        return response()->json([
+            'image' => $image
+        ]);
     }
 
     /**
@@ -139,7 +140,7 @@ class ImageController extends Controller
     public function destroy(string $id)
     {
         // Detail
-        $image = Images::find($id);
+        $image = Images::findOrFail($id);
 
         if (!$image) {
             return response()->json([
@@ -155,6 +156,7 @@ class ImageController extends Controller
             $storage->delete($image->image);
         }
 
+        $image->delete();
         // Return Json Response
         return response()->json([
             'message' => 'image successfully deleted'

@@ -2,11 +2,14 @@ import { Button, Label, TextInput, Textarea } from "flowbite-react";
 import { useState } from "react";
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddImages = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const uploadImage = async () => {
     const formData = new FormData();
@@ -14,15 +17,19 @@ const AddImages = () => {
     formData.append("description", description);
     formData.append("image", image);
 
-    const responce = await axios.post(
+    const response = await axios.post(
       "http://127.0.0.1:8000/api/images",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    if (responce) {
-      console.log(responce);
+    if (response) {
+      alert(response.message);
+      setMessage(response.message);
+      setTimeout(() => {
+        navigate("gallery/images");
+      }, 2000);
     }
   };
   const handleSubmit = async (e) => {
