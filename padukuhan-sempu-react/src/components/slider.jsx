@@ -22,9 +22,9 @@ const slides = [
 
 const Slider = () => {
   return (
-    <div className="carousel w-full bg-cover">
+    <div className="carousel w-full bg-cover h-[50vh]">
       {slides.map((slide) => (
-        <div key={slide.id} id={slide.id} className="carousel-item relative w-full">
+        <div key={slide.id} id={slide.id} className="carousel-item relative w-full ">
           <img src={slide.imageUrl} className="w-full" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href={slide.prevSlide} className="btn btn-circle">❮</a>
