@@ -1,17 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const ContentBudaya = ({ judul, gambar, deskripsi }) => {
-    return (
-        <>
-            <div className='flex '>
-                <p className='text-extrablack'>
-                    {judul}
-                </p>
-                <img src={gambar} alt="budaya" />
-                <p>{deskripsi}</p>
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="flex ">
+        <p className="text-black">{judul}</p>
+        <img src={gambar} alt="budaya" />
+        <p>{deskripsi}</p>
+      </div>
+    </>
+  );
+};
 
-export default ContentBudaya
+export default ContentBudaya;
