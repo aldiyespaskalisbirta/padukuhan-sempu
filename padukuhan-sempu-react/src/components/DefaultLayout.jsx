@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
+import Footer from "./footer";
 
 const user = {
   name: "Tom Cook",
@@ -26,9 +27,10 @@ export default function DefaultLayout() {
   return (
     <>
       <Navbar />
-      <section>
+      <section className="bg-white">
         <Outlet />
       </section>
+      <Footer/>
     </>
   );
 }

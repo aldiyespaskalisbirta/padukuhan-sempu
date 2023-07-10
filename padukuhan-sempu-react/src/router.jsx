@@ -7,8 +7,8 @@ import Signup from "./pages/Signup";
 import GuestLayout from "./components/GuestLayout";
 import DefaultLayout from "./components/DefaultLayout";
 import Home from "./pages/Home";
-import Images from "./components/Images";
-import UploadImage from "./components/UploadImage";
+import Images from "./components/Gallery/Images";
+import UploadImage from "./components/Gallery/UploadImage";
 
 const router = createBrowserRouter([
   {

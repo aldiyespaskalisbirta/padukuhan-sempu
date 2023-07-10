@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal"
-import Slider from "../components/slider";
+import Slider from "../components/Home/slider";
 import line from "../image/Line.png"
-import Card from "../components/CardKegiatanTahunan"
-import MapLink from "../components/MapLink";
+import Card from "../components/Home/CardKegiatanTahunan"
+import MapLink from "../components/Home/MapLink";
 
 const Home = () => {
 
@@ -80,7 +80,7 @@ const Home = () => {
           </div>
         </div>
         {/* Google Maps */}
-        <div className="text-center m-16 ">
+        <div className="text-center mt-16 mr-16 ">
           <div >
             <Slide>
               <p className="uppercase ont-sans font-black md:text-2xl text-base mb-10 uppercase">lokasi dan kontak</p>
