@@ -162,4 +162,9 @@ class ImageController extends Controller
             'message' => 'image successfully deleted'
         ], 200);
     }
+
+    public function downloadImage($path)
+    {
+        return Storage::download($path);
+    }
 }

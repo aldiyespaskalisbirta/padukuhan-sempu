@@ -21,23 +21,11 @@ const ImageModal = ({ imageUrl, title, description, imageId }) => {
       });
   };
 
-  const downloadFile = (fileUrl, fileName) => {
-    fetch(fileUrl)
-      .then((response) => response.blob())
-      .then((blob) => {
-        // Buat objek URL dari blob
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        // Buat elemen <a> untuk memicu unduhan
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", fileName);
-        // Simulasikan klik pada elemen <a> untuk memulai unduhan
-        link.click();
-        // Hapus objek URL setelah unduhan selesai
-        window.URL.revokeObjectURL(url);
-      })
-      .catch((error) => {
-        console.error("Error downloading file:", error);
+  const downloadImage = (id) => {
+    axios
+      .get(`http://127.0.0.1:8000/api/images/${id}/download`)
+      .then(function (response) {
+        console.log(response);
       });
   };
 
@@ -64,7 +52,7 @@ const ImageModal = ({ imageUrl, title, description, imageId }) => {
             <div className="action flex gap-5">
               <button
                 className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 ease-in-out"
-                onClick={() => downloadFile(imageUrl)}
+                onClick={() => downloadImage(imageId)}
               >
                 Download
               </button>

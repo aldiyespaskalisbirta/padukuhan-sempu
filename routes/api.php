@@ -25,3 +25,4 @@ Route::post('images', [ImageController::class, 'store']);
 Route::put('images-update/{id}', [ImageController::class, 'update']);
 Route::delete('images-delete/{id}', [ImageController::class, 'destroy']);
 Route::get('/download/{file}', 'DownloadController@downloadFile');
+Route::get('images/{id}/download', [ImageController::class, 'downloadImage']);
