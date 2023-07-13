@@ -9,7 +9,7 @@ const CardKegiatanTahunan = ({ url, judul, deskripsi }) => {
                     <h2 className="card-title">{judul}</h2>
                     <p className="text-justify">{deskripsi}</p>
                     <div className="card-actions">
-                        <button className="btn bg-[#80A08D]">Baca Selengkapnya</button>
+                        <button className="btn bg-[#80A08D]" onClick={()=> window.location.href = '/Budaya'}>Baca Selengkapnya</button>
                     </div>
                 </div>
             </div>

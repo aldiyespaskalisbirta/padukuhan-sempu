@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 
 const ContentBudaya = ({ data }) => {
   return (
@@ -11,23 +12,29 @@ const ContentBudaya = ({ data }) => {
         return (
           <div
             key={index}
-            className={`flex flex-col lg:flex-row items-center justify-center m-4`}
+            className={`flex flex-col lg:flex-row items-center justify-center mt-8`}
           >
             <div
-              className={`w-full p-4 m-2 lg:w-[100vh] flex flex-col justify-center items-center  ${textOrder}`}
+              className={`w-full p-4 m-2 lg:w-[100vh] flex flex-col justify-center items-center ${imageOrder === "order-first" ? "lg:order-2" : ""
+                }`}
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {item.judul}
-              </h5>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {item.deskripsi}
-              </p>
+              <Fade direction="left" delay={300}>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {item.judul}
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {item.deskripsi}
+                </p>
+              </Fade>
             </div>
-            <img
-              className={`w-[50vh] object-cover mx-auto rounded-br-[60px] rounded-tl-[60px] lg:w-96 mb-5 ${imageOrder}`}
-              src={item.gambar}
-              alt=""
-            />
+            <Fade direction="right" delay={300}>
+              <img
+                className={`w-[50vh] object-cover mx-auto rounded-br-[40px] rounded-tl-[40px] lg:w-96 mb-5 ${imageOrder === "order-first" ? "lg:order-1" : ""
+                  }`}
+                src={item.gambar}
+                alt=""
+              />
+            </Fade>
           </div>
         );
       })}
